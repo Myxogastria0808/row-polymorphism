@@ -16,10 +16,14 @@
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             # Java
-            jdk21
+            jdk24
             # OCaml
             ocaml
+            opam
           ];
+          shellHook = ''
+              eval $(opam env --switch=default)
+          '';
         };
       }
     );
